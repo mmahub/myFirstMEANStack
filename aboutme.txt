@@ -1,0 +1,14 @@
+Task Manager web application:
+
+1) This is task manager web application (MEAN stack), where user can login and manage its task.
+2) user can update the status of the listed-task by clicking on update icon on Task-List page.
+3) user can delete the task as well by clicking the delete(trash) icon on Task-List page.
+4) only loged-in user can view Task-List and perform the update and delete operations on the task.
+5) user Sign Up (registration), login and Logout features available.
+
+----------------
+
+Pending Works:
+1) on update-task page prefilled values not coming for "Current status" and "Deadline" fields.
+2) pagination of Task-List page is pending.
+3) after user login, users name should be displayed on top-right side of taskbar just before the "Logout" button. 
