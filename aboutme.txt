@@ -8,6 +8,14 @@ Task Manager web application:
 
 ----------------
 
+Currently Accessible features in this app:
+1) user can register and login.
+2) user can see its task list.
+3) user can edit the task from task list.
+4) user can logout.
+
+----------------
+
 Pending Works:
 1) on update-task page prefilled values not coming for "Current status" and "Deadline" fields.
 2) pagination of Task-List page is pending.
