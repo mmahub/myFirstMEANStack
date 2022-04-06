@@ -11,8 +11,9 @@ Task Manager web application:
 Currently Accessible features in this app:
 1) user can register and login.
 2) user can see its task list.
-3) user can edit the task from task list.
+3) user can edit and delete the task from task list.
 4) user can logout.
+5) Routeguard is present for the URL.
 
 ----------------
 
