@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     if (!validatePassword) return res.status(400).send('Invalid email or password.');
 
     // creating token by .sign() with first arg is payload and secong arg is key.
-    const payload = { _id: user._id, email: user.email } ;
+    const payload = { _id: user._id, name: user.name, email: user.email } ;
     const token = jwt.sign( payload, 'jwtPrivateKey' );
 
     // sending jwt token in response.
