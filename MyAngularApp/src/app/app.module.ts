@@ -17,12 +17,18 @@ import { AuthGuard } from "./auth.guard";
 import { UserService } from "src/app/shared/user.service";
 import { TokenInterceptor } from "src/app/shared/token-interceptor";
 import { LoginComponent } from "./user/login/login.component";
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './shared/welcome-page/welcome-page.component';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent,
+    WelcomePageComponent,
+    
   ],
   imports: [
     BrowserModule,
