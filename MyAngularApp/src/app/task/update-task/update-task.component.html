@@ -34,9 +34,10 @@
 
         <div class="mb-3">
             <label for="exampleInputStatus" class="form-label">Current Status</label>
-            <select class="form-control" name="statusId" id="" formControlName="statusId">
-                <option [ngValue]="mcurrentTask.statusId_id" >{{ mcurrentTask.statusId }}</option>
-                <option *ngFor="let sta of statusTypes" [ngValue]="sta._id">
+            <select class="form-control" name="statusId" id="" formControlName="statusId"  >
+                <!-- <option [ngValue]="mcurrentTask.statusId_id" >{{ mcurrentTask.statusId }}</option> -->
+                <!-- <option [ngValue]="mcurrentTask.statusId_id" >{{ mcurrentTask }}</option> -->
+                <option *ngFor="let sta of statusTypes" [ngValue]="sta._id">    
                     {{ sta.statusTypes }}
                 </option>
             </select>
@@ -57,7 +58,9 @@
                 formControlName="deadline" 
                 placeholder="Deadline"
                 [bsConfig]="datePickerConfig"
-                placement="above"   
+                placement="above"
+                  
+                
             >
 
             <!-- error messages for dedaline-control -->
@@ -77,4 +80,4 @@
 
 
 
-<!-- *ngIf="class="border border-warning"" -->
+<!-- *ngIf="class="border border-warning""    [selected]="mcurrentTaskStatus" -->

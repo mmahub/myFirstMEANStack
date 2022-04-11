@@ -22,11 +22,16 @@ export class UpdateTaskComponent implements OnInit {
    
   id ;
   currentTask ;
-  mcurrentTask ;
+  mcurrentTaskStatus
+  mcurrentTaskDeadline ;
+  mcurrentTaskTaskname ;
   submitted: boolean;
   showSuccessMessage: boolean;
   showFailMessage: boolean;
   statusTypes: any ;
+  stringifyResult: any;
+  // stringifyResult1: any;
+  jsonResult: any ;
 
 
   updateTaskForm = this.formBuilder.group({
@@ -44,7 +49,7 @@ export class UpdateTaskComponent implements OnInit {
       {
         containerClass: 'theme-default',    //'theme-blue', 'theme-green', theme-red
         showWeekNumbers: false,
-        dateInputFormat: 'DD/MM/YYYY',
+        dateInputFormat: 'YYYY-MM-DD',
         // bsValue: this.varDeadline
         /*
         1- below line of code is for setting minimum Date 
@@ -71,18 +76,38 @@ export class UpdateTaskComponent implements OnInit {
     this.taskService.getCurrentTask(this.id).subscribe( (result) => {
       this.currentTask = result ;
 
+      this.stringifyResult = JSON.stringify(result)
+      this.jsonResult = JSON.parse(this.stringifyResult);
+      // this.stringifyResult1 = JSON.stringify(this.stringifyResult)
+
+      // this.stringifyResult = JSON.parse(result)
+      // this.jsonResult = JSON.parse(this.stringifyResult)
+      // this.jsonResult = JSON.parse(result)
+      console.log("logging result..: "+ this.stringifyResult);   //.tasks.statusId
+      console.log("logging result_task..: "+ this.jsonResult["tasks"].task);
+      console.log("logging result_status..: "+ this.jsonResult["tasks"].statusId);
+      console.log("logging result_deadline..: "+ this.jsonResult["tasks"].deadline_date);
+      // console.log("logging result..: "+ this.stringifyStatus.statusId);
+      
+
       console.warn(this.currentTask.tasks);
       
       //here accessing tasks array by using ".task" at the end.
-      this.mcurrentTask = this.currentTask.tasks
+      this.mcurrentTaskTaskname = this.jsonResult["tasks"].task 
+      this.mcurrentTaskStatus = this.jsonResult["tasks"].statusId
+      this.mcurrentTaskDeadline = this.jsonResult["tasks"].deadline_date
+      
 
-      console.warn(this.mcurrentTask.statusId_id);
-      console.warn(this.mcurrentTask.deadline_date);
+      console.warn('logging status:' + this.mcurrentTaskStatus);   //.statusId.statusTypes
+      console.warn(this.mcurrentTaskDeadline);
       
-      
-      this.updateTaskForm.controls['task'].setValue(this.mcurrentTask['task']);
+      this.updateTaskForm.controls['task'].setValue(this.mcurrentTaskTaskname);
+      // this.updateTaskForm.controls['statusId'].setValue(this.mcurrentTaskStatus);
+      // this.updateTaskForm.controls['deadline'].setValue(this.mcurrentTaskDeadline);
+      // this.updateTaskForm.controls['task'].setValue(this.mcurrentTask['task']);
       // this.updateTaskForm.controls['statusId'].setValue(this.mcurrentTask['statusId']);
       // this.updateTaskForm.controls['deadline'].setValue(this.mcurrentTask['deadline_date']);
+      
 
       // this.updateTaskForm = this.formBuilder.group({
       //   task: new FormControl(this.mcurrentTask['task']),
