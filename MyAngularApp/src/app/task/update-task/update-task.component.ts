@@ -50,7 +50,7 @@ export class UpdateTaskComponent implements OnInit {
         containerClass: 'theme-default',    //'theme-blue', 'theme-green', theme-red
         showWeekNumbers: false,
         dateInputFormat: 'YYYY-MM-DD',
-        // bsValue: this.varDeadline
+        // bsValue: this.mcurrentTaskDeadline
         /*
         1- below line of code is for setting minimum Date 
         2- (with "minDate:new Date()" user will be able to select only future dates from present day
@@ -85,7 +85,7 @@ export class UpdateTaskComponent implements OnInit {
       // this.jsonResult = JSON.parse(result)
       console.log("logging result..: "+ this.stringifyResult);   //.tasks.statusId
       console.log("logging result_task..: "+ this.jsonResult["tasks"].task);
-      console.log("logging result_status..: "+ this.jsonResult["tasks"].statusId);
+      console.log("logging result_status..: "+ this.jsonResult["tasks"].statusId_id);
       console.log("logging result_deadline..: "+ this.jsonResult["tasks"].deadline_date);
       // console.log("logging result..: "+ this.stringifyStatus.statusId);
       
@@ -94,19 +94,14 @@ export class UpdateTaskComponent implements OnInit {
       
       //here accessing tasks array by using ".task" at the end.
       this.mcurrentTaskTaskname = this.jsonResult["tasks"].task 
-      this.mcurrentTaskStatus = this.jsonResult["tasks"].statusId
+      this.mcurrentTaskStatus = this.jsonResult["tasks"].statusId_id
       this.mcurrentTaskDeadline = this.jsonResult["tasks"].deadline_date
       
-
-      console.warn('logging status:' + this.mcurrentTaskStatus);   //.statusId.statusTypes
-      console.warn(this.mcurrentTaskDeadline);
-      
+      //this will give us prefilled values for Task that we want to update
       this.updateTaskForm.controls['task'].setValue(this.mcurrentTaskTaskname);
-      // this.updateTaskForm.controls['statusId'].setValue(this.mcurrentTaskStatus);
-      // this.updateTaskForm.controls['deadline'].setValue(this.mcurrentTaskDeadline);
-      // this.updateTaskForm.controls['task'].setValue(this.mcurrentTask['task']);
-      // this.updateTaskForm.controls['statusId'].setValue(this.mcurrentTask['statusId']);
-      // this.updateTaskForm.controls['deadline'].setValue(this.mcurrentTask['deadline_date']);
+      this.updateTaskForm.controls['statusId'].setValue(this.mcurrentTaskStatus);
+      this.updateTaskForm.controls['deadline'].setValue(new Date(this.mcurrentTaskDeadline));
+      
       
 
       // this.updateTaskForm = this.formBuilder.group({
