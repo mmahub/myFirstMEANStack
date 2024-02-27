@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   submitted:boolean = false ;
   invalidEmailPassword: boolean ;
   token: any;
+  username: any;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -43,7 +44,11 @@ export class LoginComponent implements OnInit {
         (result) => {
           console.warn(result);
           this.token= result.token  ;
+          this.username = result.name;
+          console.log(`Logging JWt Token: ${this.token}`);
+          console.log(`Logging Username: ${result.name}`);
           localStorage.setItem('token', this.token);
+          localStorage.setItem('Username', result.name);
           this.router.navigate(['/tasklist']);
           // return
         },

@@ -34,11 +34,18 @@ export class UserService {
   }
 
   logoutUser(){
+    
+    // localStorage.clear()
     localStorage.removeItem('token')
+    localStorage.removeItem('Username')
     this.router.navigate(['/login'])
   }
 
   getToken(){
     return localStorage.getItem('token') ;
+  }
+
+  getUsername(){
+    return localStorage.getItem('Username') ;
   }
 }

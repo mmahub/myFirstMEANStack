@@ -34,8 +34,8 @@ router.post('/', async (req, res) => {
     const payload = { _id: user._id, name: user.name, email: user.email } ;
     const token = jwt.sign( payload, 'jwtPrivateKey' );
 
-    // sending jwt token in response.
-    res.send({token});
+    // sending jwt token & User's Name and Email details in response.
+    res.send({token, name: user.name, email: user.email});
     // res.send(`Successfully logged in`);
     // res.send(`Token: ${token}`);
 
