@@ -71,13 +71,18 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <div class="mb-3">
+            <p><button type="submit" class="btn btn-primary" [disabled]="!updateTaskForm.dirty">Update</button></p>            
+            <button type="button" class="btn btn-danger" (click)="navigateToTasklist()">Cancel and back to Task list</button>
+        </div>
+        
+        
     </form>
 </div>
 
 
 
 
-
-
+<!-- <a class="link-primary" (click)="navigateToTasklist()" >Cancel and back to Task list</a>             -->
+<!-- routerLink="tasklist" -->
 <!-- *ngIf="class="border border-warning""    [selected]="mcurrentTaskStatus" -->

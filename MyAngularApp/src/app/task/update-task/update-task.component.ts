@@ -68,6 +68,10 @@ export class UpdateTaskComponent implements OnInit {
     } )
   }
 
+  navigateToTasklist(){
+    this.router.navigate(['/tasklist']);
+  }
+
   ngOnInit(): void {
 
     //getting id
