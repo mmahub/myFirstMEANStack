@@ -12,7 +12,7 @@ const task = require('./routes/tasks')
 
 mongoose.connect('mongodb://localhost/myMEANStackApp',  { useNewUrlParser: true, useUnifiedTopology: true } )
     .then( () => { console.log('Successfully connected to MongoDB...') })
-    .catch( (err) => { console.error('Could not connect to MongoDB...') }) ;
+    .catch( (err) => { console.error('Could not connect to MongoDB: ' + err) }) ;
 
 // connecting with angularApp running on below link    
 app.use(express.json({ origin: 'http://localhost:4200' }))
